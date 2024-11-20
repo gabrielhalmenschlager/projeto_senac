@@ -1,0 +1,62 @@
+.navbar-brand img {
+    height: 50px;
+}
+
+.navbar {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .nav-item,
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link {
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.usuario-menu {
+    position: relative;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    min-width: 150px;
+}
+
+.sub-menu .nav-link {
+    padding: 10px 15px;
+    display: block;
+    text-align: left;
+}
+
+.sub-menu .nav-link:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.usuario-menu:hover .sub-menu {
+    display: block;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 15px;
+}
+
+.container {
+    max-width: 1200px;
+}
