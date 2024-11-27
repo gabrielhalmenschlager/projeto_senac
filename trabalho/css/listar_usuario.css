@@ -10,12 +10,11 @@ body, html {
 
 .form-title {
     font-size: 28px;
-    color: #003B5C; /* Cor principal do Senac */
+    color: #003B5C;
     margin-bottom: 20px;
     font-weight: bold;
 }
 
-/* Estilos da tabela */
 .table {
     border-radius: 8px;
     overflow: hidden;
@@ -27,11 +26,11 @@ body, html {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f9f9f9; /* Cor alternada para as linhas */
+    background-color: #f9f9f9;
 }
 
 .table-hover tbody tr:hover {
-    background-color: #e6f7ff; /* Cor de destaque no hover */
+    background-color: #e6f7ff;
 }
 
 .table th {
@@ -60,7 +59,6 @@ body, html {
     font-size: 14px;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .table th, .table td {
         font-size: 14px;

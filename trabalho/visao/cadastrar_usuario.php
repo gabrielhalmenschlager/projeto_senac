@@ -1,5 +1,6 @@
 <?php
 
+include_once('../controle/controle_session.php');
 $title = "Formulário de Cadastro de Usuário";
 include_once('cabecalho.php');
 include_once('menu_superior.php');
