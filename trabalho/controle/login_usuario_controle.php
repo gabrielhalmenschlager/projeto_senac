@@ -19,8 +19,8 @@ $sql = "Select
         usuario='$usuario'
         and senhaUsuario='$senhaCrip'";
 
-        $result = mysqli_query($conexao,$sql) or die (false);
-        $dados = $result->fetch_assoc();
+        $ativos = mysqli_query($conexao,$sql) or die (false);
+        $dados = $ativos->fetch_assoc();
 
 if ($dados['quantidade'] > 0) {
     $_SESSION['login_ok']=true;

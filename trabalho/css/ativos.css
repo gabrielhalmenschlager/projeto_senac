@@ -1,0 +1,20 @@
+.btn-outline-primary {
+    background-color: #003B5C;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: auto;
+    border-radius: 5px;
+}
+
+.btn-outline-primary:hover {
+    background-color: #01579B;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+}

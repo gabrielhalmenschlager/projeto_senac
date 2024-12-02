@@ -23,15 +23,16 @@ $query="
                                 '".$turma."',
                                     NOW())";
 
-$result = mysqli_query($conexao,$query)or die(false);
-if($result){
+$ativos = mysqli_query($conexao,$query)or die(false);
+if($ativos){
     echo"<script> alert ('usuario cadastrado')
     window.location.href = '../visao/listar_usuario.php'
  </script>";
 }
 else{
-    echo"<script> alert ('usuario cadastrado');
-   window.location.href = '../visao/cadastro_usuario.php'</script>";
+    echo"<script> alert ('usuario cadastrado')
+   window.location.href = '../visao/cadastro_usuario.php'
+   </script>";
 }
 
 

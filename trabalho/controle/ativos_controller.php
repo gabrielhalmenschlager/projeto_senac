@@ -1,9 +1,9 @@
 <?php 
 
-include_once('../controle/controle_session.php');
 include_once('../modelo/conexao.php');
+include_once('controle_session.php');
 
-$ativo = $_POST['ativo'];
+$ativos = $_POST['ativo'];
 $marca = $_POST['marca'];
 $tipo = $_POST['tipo'];
 $quantidade = $_POST['quantidade'];
@@ -11,14 +11,8 @@ $observacao = $_POST['observacao'];
 
 $user = $_SESSION['id_user'];
 
-echo $ativo;
-echo $marca;
-echo $tipo;
-echo $quantidade;
-echo $observacao;
-
 $query = "
-    INSERT INTO ativos (
+    insert into ativo (
         descricaoAtivo,
         quantidadeAtivo,
         statusAtivo,
@@ -26,10 +20,10 @@ $query = "
         idMarca,
         idTipo,
         dataCadastro,
-        usuarioCadastro
+        idUsuario
     ) 
-    VALUES (
-        '".$ativo."',
+    values (
+        '".$ativos."',
         '".$quantidade."',
         'S',
         '".$observacao."',
@@ -40,18 +34,14 @@ $query = "
     )
 ";
 
-$result = mysqli_query($conexao,$query)or die(false);
 
-if ($result) {
-    echo "<script>
-        alert('Ativo cadastrado com sucesso!');
-        window.location.href = '../visao/listar_ativos.php';
-    </script>";
+$ativos = mysqli_query($conexao,$query)or die(false);
+
+if ($ativos) {
+    echo 'Ativo cadastrado com sucesso!';
+
 } else {
-    echo "<script>
-        alert('Erro ao cadastrar ativo!');
-        window.location.href = '../visao/cadastro_ativo.php';
-    </script>";
+    echo 'Erro ao cadastrar ativo!';
 }
 
 ?>

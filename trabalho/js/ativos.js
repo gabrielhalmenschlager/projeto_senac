@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#salvar_info").click(function () {
 
-        let descricao_ativo = $("#ativo").val();
+        let ativo = $("#ativo").val();
         let marca = $("#marca").val();
         let tipo = $("#tipo").val();
         let quantidade = $("#quantidade").val();
@@ -11,7 +11,7 @@ $(document).ready(function () {
             type:'POST',
             url: "../controle/ativos_controller.php",
             data:{
-                ativo:descricao_ativo,
+                ativo:ativo,
                 marca:marca,
                 tipo:tipo,
                 quantidade:quantidade,
@@ -19,7 +19,8 @@ $(document).ready(function () {
             },
             
             success: function(result){
-                console.log(result)
+                alert(result);
+                location.reload();
             }});
 
     });

@@ -17,9 +17,9 @@ $query = "
             idUsuario = '".$id."'
 ";
 
-$result = mysqli_query($conexao, $query);
+$ativos = mysqli_query($conexao, $query);
 
-if ($result) {
+if ($ativos) {
     echo "<script> 
             alert('Usuário Alterado');
             window.location.href = '../visao/listar_usuario.php'; 

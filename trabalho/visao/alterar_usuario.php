@@ -26,25 +26,21 @@ foreach ($info_bd as $user) {
     <div class="container">
         <div class="form-container">
 
-            <!-- Logo -->
             <img src="https://www.senacrs.com.br/assets/layout/images/logo_senac.png" alt="Logo" class="logo">
 
             <h2 class="form-title">Alterar Usuário</h2>
 
             <form action="../controle/login_usuario_controle.php" method="POST">
 
-                <!-- Id-->
                 <div class="form-group">
                     <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id_user ?>" placeholder="Digite seu Id" required>
                 </div>
 
-                <!-- Nome -->
                 <div class="form-group">
                     <label for="nome" class="form-label">Nome</label>
                     <input type="text" class="form-control" name="nome" id="nome" value="<?php echo $nome ?>" placeholder="Digite seu nome" required>
                 </div>
 
-                <!-- Turma -->
                 <div class="form-group">
                     <label for="turma" class="form-label">Turma</label>
                     <input type="text" class="form-control" name="turma" id="turma" value="<?php echo $turma ?>" placeholder="Informe sua turma" required>
