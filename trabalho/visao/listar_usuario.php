@@ -52,6 +52,7 @@ $info_bd = busca_info_bd($conexao, 'usuario');
                 ?>
             </tbody>
         </table>
+        <input type="hidden" id="idAtivo" value="">
     </div>
 
     <footer class="footer mt-5 py-3">

@@ -25,12 +25,12 @@ $sql = "SELECT
             
         FROM ativo a";
 
-    $result = mysqli_query($conexao, $sql) or die(false);
-    $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$result = mysqli_query($conexao, $sql) or die(false);
+$ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
 
-?>
+<script scr="../js/ativos.js"></script>
 
 <body>
 
@@ -47,6 +47,7 @@ $sql = "SELECT
                     <th scope="col">Observação</th>
                     <th scope="col">Data Cadastro</th>
                     <th scope="col">Usuario Cadastro</th>
+                    <th style="text-align:center;">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -74,6 +75,30 @@ $sql = "SELECT
                         </td>
                         <td>
                             <?php echo $ativos['usuario']; ?>
+                        </td>
+                        <td>
+                            <div class="acoes" style="display: flex;justify-content: space-around;">
+                                <div class="muda_status">
+                                    <?php
+                                    if ($ativos['statusAtivo']=="S") {
+                                    ?>
+                                        <div class="inativo" onclick="muda_status('N','<?php echo $ativos['idAtivo'];?>')">
+                                            <i class="bi bi-toggle-on"></i>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <div class="ativo" onclick="muda_status('S','<?php echo $ativos['idAtivo']; ?>')">
+                                            <i class="bi bi-toggle-off"></i>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="edit">
+                                        <i class="bi bi-pencil-square"></i>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 <?php

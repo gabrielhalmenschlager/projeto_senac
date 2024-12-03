@@ -7,6 +7,12 @@ $(document).ready(function () {
         let quantidade = $("#quantidade").val();
         let observacao = $("#observacao").val();
 
+        if(idAtivo == ""){
+            acao='inserir';
+        } else {
+            acao='update';
+        }
+
         $.ajax({
             type:'POST',
             url: "../controle/ativos_controller.php",
@@ -21,7 +27,29 @@ $(document).ready(function () {
             success: function(result){
                 alert(result);
                 location.reload();
-            }});
-
+            }
+        });
     });
 });
+
+function muda_status(status,idAtivo){
+
+    $.ajax({
+        type:'POST',
+        url: "../controle/ativos_controller.php",
+        data:{
+            acao:'aleterar_status',
+            status:status,
+            idAtivo:idAtivo
+        },
+        
+        success: function(result){
+
+            console.log(result)
+
+            //alert(result);
+            //location.reload();
+        }
+    });
+
+}
