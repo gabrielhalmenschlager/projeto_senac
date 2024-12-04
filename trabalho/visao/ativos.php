@@ -19,7 +19,7 @@ include_once('menu_superior.php');
 
 <?php 
 
-include_once('modal_ativo.php');
 include_once('listar_ativos.php');
+include_once('modal_ativo.php');
 
 ?>

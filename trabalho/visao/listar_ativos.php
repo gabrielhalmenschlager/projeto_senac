@@ -30,8 +30,6 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
 
-<script scr="../js/ativos.js"></script>
-
 <body>
 
     <div class="container mt-5">
@@ -83,16 +81,16 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                     if ($ativos['statusAtivo']=="S") {
                                     ?>
                                         <div class="inativo" onclick="muda_status('N','<?php echo $ativos['idAtivo'];?>')">
-                                            <i class="bi bi-toggle-on"></i>
+                                            <i class="bi bi-toggle2-on"></i>
                                         </div>
                                     <?php
                                     } else {
                                     ?>
                                         <div class="ativo" onclick="muda_status('S','<?php echo $ativos['idAtivo']; ?>')">
-                                            <i class="bi bi-toggle-off"></i>
+                                        <i class="bi bi-toggle2-off"></i>
                                         </div>
                                     <?php
-                                    }
+                                 }
                                     ?>
                                 </div>
                                 <div class="edit">
@@ -106,6 +104,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 ?>
             </tbody>
         </table>
+        <input type="hidden" id="idAtivo" name="idAtivo">
     </div>
 
     <footer class="footer mt-5 py-3">

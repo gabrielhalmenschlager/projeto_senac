@@ -1,6 +1,6 @@
 <?php
 
-ini_set('display_errors',0);
+ini_set('display_errors', 0);
 error_reporting(E_ERROR);
 
 include_once('../modelo/conexao.php');
@@ -15,10 +15,12 @@ $acao = $_POST['acao'];
 $idAtivo = $_POST['idAtivo'];
 $statusAtivo = $_POST['status'];
 
+$user = $_SESSION['id_user'];
+
 if ($acao == 'inserir'){
 
     $query = "
-    insert into ativo (
+    INSERT INTO ativo (
         descricaoAtivo,
         quantidadeAtivo,
         statusAtivo,
@@ -28,7 +30,7 @@ if ($acao == 'inserir'){
         dataCadastro,
         idUsuario
     ) 
-    values (
+    VALUES (
         '".$ativos."',
         '".$quantidade."',
         'S',
@@ -38,34 +40,28 @@ if ($acao == 'inserir'){
         NOW(),
         '".$user."'
     )
-";   
+    ";
 
-}
+    $result_insert = mysqli_query($conexao, $query);
 
-$user = $_SESSION['id_user'];
-
-$ativos = mysqli_query($conexao,$query)or die(false);
-
-if ($ativos) {
-    echo 'Ativo cadastrado com sucesso!';
-
-} else {
-    echo 'Erro ao cadastrar ativo!';
+    if ($result_insert) {
+        echo 'Ativo cadastrado com sucesso!';
+    } else {
+        echo 'Erro ao cadastrar ativo!';
+    }
 }
 
 if ($acao == 'alterar_status'){
     $sql = "
-        Update ativo set statusAtivo ='$statusAtivo' where idAtivo=$idAtivo
+        UPDATE ativo SET statusAtivo ='$statusAtivo' WHERE idAtivo=$idAtivo
     ";
 
-$result = mysqli_query($conexao,$sql)or die(false);
+    $result_status = mysqli_query($conexao, $sql);
 
-if ($result) {
-    echo 'Status Alterado!';
-
-} else {
-    echo 'Status Não Alterado!';
+    if ($result_status) {
+        echo 'Status Alterado!';
+    } else {
+        echo 'Status Não Alterado!';
+    }
 }
-}
-
 ?>

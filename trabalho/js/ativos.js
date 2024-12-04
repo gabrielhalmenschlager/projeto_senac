@@ -6,6 +6,7 @@ $(document).ready(function () {
         let tipo = $("#tipo").val();
         let quantidade = $("#quantidade").val();
         let observacao = $("#observacao").val();
+        let idAtivo = $("#idAtivo").val();
 
         if(idAtivo == ""){
             acao='inserir';
@@ -21,7 +22,8 @@ $(document).ready(function () {
                 marca:marca,
                 tipo:tipo,
                 quantidade:quantidade,
-                observacao:observacao
+                observacao:observacao,
+                acao:acao
             },
             
             success: function(result){
@@ -38,17 +40,14 @@ function muda_status(status,idAtivo){
         type:'POST',
         url: "../controle/ativos_controller.php",
         data:{
-            acao:'aleterar_status',
+            acao:'alterar_status',
             status:status,
             idAtivo:idAtivo
         },
         
         success: function(result){
-
-            console.log(result)
-
-            //alert(result);
-            //location.reload();
+            alert(result);
+            location.reload();
         }
     });
 
