@@ -93,7 +93,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                  }
                                     ?>
                                 </div>
-                                <div class="edit">
+                                <div class="edit" onclick="editar('<?php echo $ativos['idAtivo']; ?>')">
                                         <i class="bi bi-pencil-square"></i>
                                 </div>
                             </div>

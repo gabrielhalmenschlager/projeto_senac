@@ -8,25 +8,27 @@ $(document).ready(function () {
         let observacao = $("#observacao").val();
         let idAtivo = $("#idAtivo").val();
 
-        if(idAtivo == ""){
-            acao='inserir';
+        if (idAtivo == "") {
+            acao = 'inserir';
         } else {
-            acao='update';
+            acao = 'update';
         }
 
         $.ajax({
-            type:'POST',
+            type: 'POST',
             url: "../controle/ativos_controller.php",
-            data:{
-                ativo:ativo,
-                marca:marca,
-                tipo:tipo,
-                quantidade:quantidade,
-                observacao:observacao,
-                acao:acao
+            data: {
+                acao: acao,
+                ativo: ativo,
+                marca: marca,
+                tipo: tipo,
+                quantidade: quantidade,
+                observacao: observacao,
+                idAtivo: idAtivo
+
             },
-            
-            success: function(result){
+
+            success: function (result) {
                 alert(result);
                 location.reload();
             }
@@ -34,21 +36,61 @@ $(document).ready(function () {
     });
 });
 
-function muda_status(status,idAtivo){
+function muda_status(status, idAtivo) {
 
     $.ajax({
-        type:'POST',
+        type: 'POST',
         url: "../controle/ativos_controller.php",
-        data:{
-            acao:'alterar_status',
-            status:status,
-            idAtivo:idAtivo
+        data: {
+            acao: 'alterar_status',
+            status: status,
+            idAtivo: idAtivo
         },
-        
-        success: function(result){
+
+        success: function (result) {
             alert(result);
             location.reload();
         }
     });
+
+}
+
+function editar(idAtivo) {
+
+    $('#idAtivo').val(idAtivo);
+
+    $.ajax({
+        type: 'POST',
+        url: "../controle/ativos_controller.php",
+        data: {
+            acao: 'get_info',
+            idAtivo: idAtivo
+        },
+
+        success: function (result) {
+
+            retorno = JSON.parse(result)
+
+            $('#btn_modal').click();
+            $("#ativo").val(retorno[0]['descricaoAtivo']);
+            $("#marca").val(retorno[0]['idMarca']);
+            $("#tipo").val(retorno[0]['idTipo']);
+            $("#quantidade").val(retorno[0]['quantidadeAtivo']);
+            $("#observacao").val(retorno[0]['observacaoAtivo']);
+
+            console.log(retorno)
+        }
+    });
+
+}
+
+function limpar_modal() {
+
+    $("#ativo").val('');
+    $("#marca").val('');
+    $("#tipo").val('');
+    $("#quantidade").val('');
+    $("#observacao").val('');
+    $("#idAtivo").val('');
 
 }

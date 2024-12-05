@@ -13,7 +13,7 @@ include_once('menu_superior.php');
     <h2 class="form-title">Cadastrar Ativos</h2>
 
     <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Abrir Modal</button>
+        <button type="button" id="btn_modal" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Abrir Modal</button>
     </div>
 </div>
 

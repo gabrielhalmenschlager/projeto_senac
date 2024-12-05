@@ -17,7 +17,7 @@ $statusAtivo = $_POST['status'];
 
 $user = $_SESSION['id_user'];
 
-if ($acao == 'inserir'){
+if ($acao == 'inserir') {
 
     $query = "
     INSERT INTO ativo (
@@ -31,14 +31,14 @@ if ($acao == 'inserir'){
         idUsuario
     ) 
     VALUES (
-        '".$ativos."',
-        '".$quantidade."',
+        '" . $ativos . "',
+        '" . $quantidade . "',
         'S',
-        '".$observacao."',
-        '".$marca."',
-        '".$tipo."',
+        '" . $observacao . "',
+        '" . $marca . "',
+        '" . $tipo . "',
         NOW(),
-        '".$user."'
+        '" . $user . "'
     )
     ";
 
@@ -51,7 +51,7 @@ if ($acao == 'inserir'){
     }
 }
 
-if ($acao == 'alterar_status'){
+if ($acao == 'alterar_status') {
     $sql = "
         UPDATE ativo SET statusAtivo ='$statusAtivo' WHERE idAtivo=$idAtivo
     ";
@@ -64,4 +64,46 @@ if ($acao == 'alterar_status'){
         echo 'Status Não Alterado!';
     }
 }
+
+if ($acao == "get_info") {
+    $sql = "
+        SELECT
+            descricaoAtivo,
+            quantidadeAtivo,
+            observacaoAtivo,
+            idMarca,
+            idTipo
+        FROM
+            ativo
+        WHERE
+            idAtivo = $idAtivo
+    ";
+
+    $result = mysqli_query($conexao, $sql) or die(false);
+    $ativo = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    echo json_encode($ativo);
+    exit();
+}
+
+if ($acao == 'update') {
+    $sql = "
+        UPDATE ativo SET
+            descricaoAtivo = '$ativos',
+            quantidadeAtivo = '$quantidade',
+            observacaoAtivo = '$observacao',
+            idMarca = '$marca',
+            idTipo = '$tipo'
+        WHERE idAtivo = $idAtivo
+    ";
+
+    $result = mysqli_query($conexao, $sql);
+
+    if ($result) {
+        echo 'Informações Alteradas!';
+    } else {
+        echo 'Informações não Alteradas!';
+    }
+}
+
 ?>

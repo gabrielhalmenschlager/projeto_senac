@@ -7,7 +7,7 @@ include_once('cabecalho.php');
     <div class="modal-content rounded-4 shadow-lg">
       <div class="modal-header" style="background-color: #003B5C; color: white;">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Ativo</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" onclick="limpar_modal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
@@ -18,7 +18,7 @@ include_once('cabecalho.php');
           <div class="mb-3">
             <label for="marca" class="form-label">Marca</label>
             <select class="form-select shadow-sm border-light" id="marca" name="marca" required>
-              <option selected disabled>Selecione a Marca</option>
+              <option selected value="">Selecione a Marca</option>
               <?php
               foreach ($marcas as $marca) {
                 echo '<option value="' . $marca['idMarca'] . '">' . $marca['descricaoMarca'] . '</option>';
@@ -29,7 +29,7 @@ include_once('cabecalho.php');
           <div class="mb-3">
             <label for="tipo" class="form-label">Tipo</label>
             <select class="form-select shadow-sm border-light" id="tipo" name="tipo" required>
-              <option selected disabled>Selecione o Tipo</option>
+              <option selected value="">Selecione o Tipo</option>
               <?php
               foreach ($tipos as $tipo) {
                 echo '<option value="' . $tipo['idTipo'] . '">' . $tipo['descricaoTipo'] . '</option>';
@@ -48,7 +48,7 @@ include_once('cabecalho.php');
         </form>
       </div>
       <div class="modal-footer">
-        <button type="reset" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>
+        <button type="reset" onclick="limpar_modal()" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>
         <button type="button" class="btn" style="background-color: #003B5C; color: white;" id="salvar_info"><i class="bi bi-save"></i> Salvar</button>
       </div>
     </div>
